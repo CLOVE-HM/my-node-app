@@ -1,47 +1,26 @@
 
-const os = require('os')
-const path = require('path')
-const fs = require('fs')
+import os from 'os'
+import { join } from 'path'
+import { readFile, writeFile } from 'fs/promises'
 
-let path1 = path.join('./content', 'text1.txt')
-let path2 = path.join('./content', 'text2.txt')
+let path1 = join('./content', 'text1.txt')
+let path2 = join('./content', 'text2.txt')
 // console.log(path1)
 // console.log(path2)
 
-let text1 = fs.readFile(path1, 'utf-8', (err, data) => {
-    console.log(`text1-callback data: ${data}`)
-    if (err) {
-        console.log('text1 error:')
-        console.log(err)
-    }
-})
-let text2 = fs.readFile(path2, 'utf-8', (err, data) => {
-    console.log(`text2-callback data: ${data}`)
-    if (err) {
-        console.log('text2 error:')
-        console.log(err)
-    }
-})
+let text1 = await readFile(path1, 'utf-8')
+let text2 = await readFile(path2, 'utf-8')
+
 console.log(`text1: ${text1}`)
 console.log(`text2: ${text2}`)
 
-fs.writeFile(
-    path.join('./content', 'text3.txt'), 
+await writeFile(
+    join('./content', 'text3.txt'), 
     `This is text3, including: ${os.EOL}- ${text1}${os.EOL}- ${text2}${os.EOL}`, 
-    { flag: 'w' },
-    (err, data) => {
-        if (data) {
-            console.log('I am printing the data message!')
-            console.log(data)
-        }
-        if (err) {
-            console.log('I am printing the error message!')
-            console.log(err)
-        }
-    },
+    { flag: 'a' }
 )
 
-
+console.log('text3.txt has been created')
 
 // let test1 = require('./module_test_1')
 // let test2 = require('./module_test_2')

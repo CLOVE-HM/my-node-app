@@ -1,8 +1,8 @@
 
 
-const http = require('http');
+import { createServer } from require('http');
 
-const server = http.createServer((req, res) => {
+const server = createServer((req, res) => {
     if (req.url === '/sepcialtest') {
         const ms = 10000;
         setTimeout(() => {

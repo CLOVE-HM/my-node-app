@@ -1,3 +1,6 @@
 This is text3, including: 
-- undefined
-- undefined
+- Hello, here is Text One.
+- Hello here is Text Two.
+This is text3, including: 
+- Hello, here is Text One.
+- Hello here is Text Two.
