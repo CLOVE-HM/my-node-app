@@ -1,6 +1,6 @@
 
 
-import { createServer } from require('http');
+import { createServer } from 'http';
 
 const server = createServer((req, res) => {
     if (req.url === '/sepcialtest') {
